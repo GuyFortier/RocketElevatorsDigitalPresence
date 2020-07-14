@@ -1,16 +1,27 @@
-This folder include all needed plugins for a specific area.
-Example: if js/scripts.js detects that you need toatr plugin, only then, toastr plugin is loaded.
+_cache		- folder used to store cached files (example: twitter feeds) for faster load
+		- required to have write permission (chmod 0755)
+		- by default, most webserver already have write permission but if not, change  permission from your ftp client or call your server administrator.
+		- can be disabled from config.inc.php
 
-Using this technique, you do not need to add manually all plugins on each page.
-In this way, the webpage stay lightweight and faster.
+_upload		- upload folder (example: contact form - page-contact-1.html)
+		- edit the path to config.inc.php
+		- required to have write permission (chmod 0755)
 
-We recommend to not delete these plugins - except if you realy do not need them.
-Otherwise, you'll get javascript errors. So if do not need toatr plugin on your website, only then you can remove it!
+view		- contains php demo files.
+		- example: demo.shop.php - contains examples of how to use the shop template files together with javascript files (js/view/demo.shop.js)
 
+config.inc.php	- global config file.
+		- edit this file using your favourite editor
 
---------------------------------------------------------------------------------------------------------------------------------------------------------
-typeahead.bundle.js - MODIFIED
-FROM THIS
-this.limit = o.limit || 5;
-TO THIS
-this.limit = o.limit || 1000;
+twitter/twitter.php	- return tweets in json format.
+		- usage example: php/twitter/tweet.php?username=stepofweb&limit-3
+		- this is called by assets/js/scripts.js
+		- sure, you can also call the url manually
+
+contact.php	- the script used to send emails via SMTP or mail()
+		- script called directly or via ajax (using form validation)
+
+phpmailer	- used by contact.php to send emails
+
+newsletter.php	- used by "subscribe to newsletter" forms.
+		- all emails are written into external text file called "_newsletter.txt"
